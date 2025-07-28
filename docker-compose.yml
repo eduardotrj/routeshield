@@ -1,0 +1,18 @@
+services:
+  # backend:
+  #   build: ./backend
+  #   ports:
+  #     - "8010:8010"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3010:5173"
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend/
+          target: /frontend
+          ignore:
+            - node_modules
